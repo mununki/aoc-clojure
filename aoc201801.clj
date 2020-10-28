@@ -20,26 +20,27 @@
             (conj acc (next-frequency acc num))) first freqs))
 
 ;; part2
-(defn find-dups [freqs changes]
-  (let [latest-freq (if (empty? freqs) 0 (last freqs))
+(def init-history {:last 0 :freqs #{0}})
+
+(defn find-dups [history changes]
+  (let [latest-freq (:last history)
         change (first changes)
         new-freq (+ latest-freq change)
         following-changes (rest changes)]
-    (if (u/ccontains? freqs new-freq)
+    (if (contains? (:freqs history) new-freq)
       new-freq
-      (if (empty? following-changes)
-        (recur (conj freqs new-freq) input-vector)
-        (recur (conj freqs new-freq) following-changes))
-      )))
+      (let [new-history (assoc history :last new-freq :freqs (conj (:freqs history) new-freq))]
+        (if (empty? following-changes)
+          (recur new-history input-vector)
+          (recur new-history following-changes))))))
 
 (comment
   ;; part1
   part1
   ;; part2
-  (find-dups [0] input-vector)
+  (find-dups init-history input-vector)
   ;; tests
-  (find-dups [0] [1 -1])
-  (find-dups [0] [3 3 4 -2 -4])
-  (find-dups [0] [-6 3 8 5 -6])
-  (find-dups [0] [7 7 -2 -7 -4])
-  )
+  (find-dups init-history [1 -1])
+  (find-dups init-history [3 3 4 -2 -4])
+  (find-dups init-history [-6 3 8 5 -6])
+  (find-dups init-history [7 7 -2 -7 -4]))
