@@ -38,15 +38,17 @@
               (conj acc id target)
               acc)) #{} input))
 
-(def part2
-  ;; let으로 절차형처럼 하는 건 좀 별로 아닐까..??
-  (let [pair (reduce (fn [acc item]
+(def found-pair (reduce (fn [acc item]
              (let [pair (finder item)
                    is-pair (> (count pair) 0)]
                (if is-pair
                  (conj acc pair)
-                 acc))) #{} input)
-        ;; pair = #{ #{"aaa" "bbb"}}
+                 acc))) #{} input))
+
+(def part2
+  ;; let으로 절차형처럼 하는 건 좀 별로 아닐까..??
+  (let [pair found-pair
+        ;; pair = #{#{"aaa" "bbb"}}
         ;; 깔끔하게 꺼낼 수 있는 방법은??
         pair-vec (vec pair)
         id1 (first (vec (first pair-vec)))
