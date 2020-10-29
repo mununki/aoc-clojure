@@ -30,17 +30,16 @@
     (if (contains? (:freqs history) new-freq)
       new-freq
       (let [new-history (assoc history :last new-freq :freqs (conj (:freqs history) new-freq))]
-        (if (empty? following-changes)
-          (recur new-history input-vector)
-          (recur new-history following-changes))))))
+        (recur new-history following-changes)))))
 
 (comment
   ;; part1
   part1
   ;; part2
-  (find-dups init-history input-vector)
+  (find-dups init-history (cycle input-vector))
   ;; tests
   (find-dups init-history [1 -1])
   (find-dups init-history [3 3 4 -2 -4])
   (find-dups init-history [-6 3 8 5 -6])
   (find-dups init-history [7 7 -2 -7 -4]))
+
