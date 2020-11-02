@@ -86,4 +86,7 @@
   ;; ArrayMap을 다룰 때 map의 한 item을 어떻게 구조분해 해야하나..
   ;; 더 좋은 방법은??
   (let [coord (first (keys (first '({[1 2] 1} {[1 3] 2}))))] coord)
-  (find-not-overlapped input))
+  (find-not-overlapped input)
+  ;; 와우!
+  (assoc-in {:name ["woonki" "moon"]} [:name 2] "moon")
+  (update-in {:name ["woonki" "moon"] :age 3} [:age] + 2))
