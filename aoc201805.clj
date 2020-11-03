@@ -6,13 +6,17 @@
   (u/read-input "src/first_clojure/input/aoc201805"))
 
 (defn reactor
+  ;; 함수를 let binding해서 사용
+  ;; cond의 다채로움
   [polymer]
-  (apply str (map char (reduce (fn [acc unit]
-                                 (cond
-                                   (empty? acc) (conj acc unit)
-                                   :else (if (= (Math/abs (- (last acc) unit)) 32)
-                                           (vec (drop-last acc))
-                                           (conj acc unit)))) [] polymer))))
+  (let [react? #(= (Math/abs (- (peek %1) %2)) 32)]
+    (->> (reduce (fn [acc unit]
+                   (cond
+                     (empty? acc) (conj acc unit)
+                     (react? acc unit) (pop acc)
+                     :else (conj acc unit))) [] polymer)
+         (map char)
+         (apply str))))
 
 (defn int-of-string
   [s]
@@ -54,4 +58,5 @@
   (- (int \A) (int \Z)) ;; 65 , 97 ~ 90 , 122
   (range 65 91)
   (remove #(or (= 65 %) (= 66 %)) [65 66 67])
-  (seq-polymer input))
+  (seq-polymer input)
+  (peek [1 2]))
