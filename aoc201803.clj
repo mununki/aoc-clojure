@@ -76,7 +76,7 @@
 (comment
   ;; part1
   (coordinates [1 3] [4 4] 1)
-  (merge-coords {} (coordinates [1 3] [4 4]))
+  (merge-coords {} (coordinates [1 3] [4 4] 1))
   (mark-claims {} "#1 @ 306,433: 2x2")
   (count-overlap input)
   ;; part2
