@@ -100,13 +100,15 @@
        first))
 
 (defn max-dups-min-by
+  ;; 특정 Guard의 잠든 시간 중 가장 자주 잠든 minutes 구하는 함수
+  ;; 반환하는 값 [분 빈도] => [38 14]
   [logs id]
   (reduce (fn [acc item]
             (let [[max-min max-freq] acc
                   [min freq] item]
               (cond
                 (> max-freq freq) acc
-                :else [min freq]))) [0 0] (aggregate-asleep (get (parser (sort-logs input)) id))))
+                :else [min freq]))) [0 0] (aggregate-asleep (get (parser (sort-logs logs)) id))))
 
 (def dups-min-of-most-sleeper
   (first (max-dups-min-by input most-sleeper)))
@@ -115,6 +117,8 @@
   (* most-sleeper dups-min-of-most-sleeper))
 
 (defn asleep-mins-by-guard
+  ;; 특정 가드의 잠든 분들을 map으로 구하는 함수
+  ;; 반환하는 값 => [389 { 10 8, 9 2, ... } ... ]
   [logs]
   (map (fn [log]
          (let [[id post] log]
@@ -130,12 +134,16 @@
                 :else [min freq]))) [0 0] log))
 
 (defn most-asleep-min-by
+  ;; 특정 Guard의 잠든 분과 빈도를 구하는 함수
+  ;; 반환하는 값 [guard-id [분 빈도]] => [398 [26 8] ... ]
   [logs]
   (map (fn [log]
          (let [[id mins] log]
            [id (max-dups-min mins)])) logs))
 
 (defn best-freq-sleeper
+  ;; 가장 자주 잠든 가드를 찾는 함수
+  ;; 반환하는 값 => ;; => [463 [49 20]]
   [logs]
   (reduce (fn [acc guard]
             (let [[max-id max-post] acc
@@ -172,7 +180,6 @@
   (sleeper (compute-asleep (take 3 (parser (sort-logs input)))))
   (into (range 57 59) (range 0 2))
   (best-freq-sleeper (most-asleep-min-by (asleep-mins-by-guard input)))
-
   ;; 대박!
   (map - [0 33] [0 23])
   ;; 왜 #()으로는 안될까?
