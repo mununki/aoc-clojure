@@ -97,6 +97,7 @@
               acc)) [] all-area))
 
 (defn names-of-infinite
+  ;; grid의 각 모서리 => infinite여서 제거할 item들을 찾는 함수
   [all-area]
   (reduce (fn [acc [[x y] [name dist]]]
             (cond
@@ -104,6 +105,7 @@
               :else acc)) #{} all-area))
 
 (defn largest-area
+  ;; => [[0 0] [28 41], [0 1] [17 24], ... ]
   [all-area]
   (->> (vals all-area)
        (map (fn [[name dist]]
@@ -112,6 +114,8 @@
        (sort #(compare (second %2) (second %1)))))
 
 (defn points-out-of-grid
+  ;; infinite에 해당하는 coord name들
+  ;; => #{7 29 31 ... }
   [points]
   (-> (measure-dists (-> points
                          parse)
@@ -121,6 +125,7 @@
       names-of-infinite))
 
 (defn largest-area-in-grid
+  ;; => [[0 0] [28 41], [0 1] [17 24], ... ]
   [points]
   (-> (measure-dists (-> points
                          parse)
