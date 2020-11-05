@@ -28,7 +28,8 @@
   (count (filter (fn [[_ v]]
                    (> v 1)) (reduce mark-claims {} claims))))
 
-(def part1
+(defn part1
+  []
   (count-overlap input))
 
 (defn overwrite-coords [acc coords]
@@ -70,7 +71,8 @@
                   (conj acc id)
                   acc))) [] areas-by-id)))
 
-(def part2
+(defn part2
+  []
   (find-not-overlapped input))
 
 (comment
