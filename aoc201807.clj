@@ -68,10 +68,12 @@
 
 (defn make-queue
   ;; "A" => ["A" "A" "A" ... ] => count 61개
+  ;; replicate는 deprecated => take와 repeat의 조합으로 사용할 수 있음
+  ;; repeatedly라는 함수도 있음
   [a]
-  (vec (replicate (- (->> a
-                          (map int)
-                          first) 4) a)))
+  (vec (repeat (- (->> a
+                       (map int)
+                       first) 4) a)))
 
 (defn process-workers
   [workers]
@@ -131,8 +133,7 @@
   (let [sec-cur (inc sec)
         [done-next workers-next steps-next] (handle-queue done workers steps)
         all-idle? (= (count (filter (fn [[k v]]
-                                      (not= (count v) 0)) workers-next)) 0)
-        _ (prn workers-next)]
+                                      (not= (count v) 0)) workers-next)) 0)]
     (if (and (= 0 (count steps-next)) all-idle?)
       sec-cur
       (recur sec-cur done-next workers-next steps-next))))
@@ -141,8 +142,8 @@
   ;; 맨 처음 queue가 다 빈 체로 시작하는 1초를 지운다.
   [steps]
   (- (->> steps
-        parse-steps
-        (counter 0 [] {:w1 [] :w2 [] :w3 [] :w4 [] :w5 []})) 1))
+          parse-steps
+          (counter 0 [] {:w1 [] :w2 [] :w3 [] :w4 [] :w5 []})) 1))
 
 (comment
   (first (map int "A"))
