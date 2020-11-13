@@ -29,8 +29,8 @@
           value-of-sum2 (if (= child 0)
                           (reduce + meta-entries)
                           (reduce (fn [acc [_ s _]]
-                                    (+' acc s)) 0 (map #(nth child-nodes %)
-                                                       filtered-entries)))]
+                                    (+ acc s)) 0 (map #(nth child-nodes %)
+                                                      filtered-entries)))]
       [(+ (reduce + meta-entries) sum-of-child) value-of-sum2 (drop meta (vec remaining))])))
 
 (defn part1_2
