@@ -77,6 +77,9 @@
 
 (comment
   ;; part1
+  (for [x (range 1 3)
+        y (range 1 4)]
+    {[x y] 1})
   (coordinates [1 3] [4 4] 1)
   (merge-coords {} (coordinates [1 3] [4 4] 1))
   (mark-claims {} "#1 @ 306,433: 2x2")
