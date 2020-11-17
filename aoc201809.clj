@@ -87,7 +87,7 @@
   (first (best-score 425 7084800)))
 
 (comment
-  (prn "---")
+  (generate-marbles 1 0 3000000 {} [0]) ;; you can reproduce here
   (time (part1))
 ;; => [186 413188]
   (part2)
