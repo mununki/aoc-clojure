@@ -87,7 +87,11 @@
   (first (best-score 425 7084800)))
 
 (comment
-  (generate-marbles 1 0 3000000 {} [0]) ;; you can reproduce here
+  ;; Execution error (ArrayIndexOutOfBoundsException) at clojure.core.rrb-vector.rrbt/slice-left$fn (rrbt.clj:393).
+  ;; Index 33 out of bounds for length 33
+  ;;
+  ;; It seems okay with around 2M items.
+  (generate-marbles 1 0 3000000 {} [0])
   (time (part1))
 ;; => [186 413188]
   (part2)
