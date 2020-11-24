@@ -63,15 +63,18 @@
 
 (defn draw
   []
-  (q/background 240)
+  (q/background 250)
   (q/stroke 0)
   (q/fill 0)
-  (q/fill 0)
+  (q/text (str "sec: " (+ (q/frame-count) 10000)) 10 20)
   (q/with-translation [0 0]
-    (doseq [[x y _ _] (map (fn [[x y vx vy]]
-                             [x y]) (flip-offset 10605 (-> input
-                                                           parse)))]
-      (q/ellipse x y 1 1))))
+    (let [sec (+ (q/frame-count) 10000)]
+      (if (<= sec 10605)
+        (doseq [[x y _ _] (map (fn [[x y vx vy]]
+                                 [x y]) (flip-offset (+ (q/frame-count) 10000) (-> input
+                                                                                   parse)))]
+          (q/ellipse x y 1 1))
+        (q/text "Thank you!")))))
 
 (defn run
   []
