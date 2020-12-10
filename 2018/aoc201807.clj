@@ -3,10 +3,10 @@
             [clojure.string :as str]))
 
 (def input
-  (u/read-input "src/first_clojure/input/aoc201807"))
+  (u/read-input "src/first_clojure/input/2018/d7"))
 
 (def input-test
-  (u/read-input "src/first_clojure/input/aoc201807test"))
+  (u/read-input "src/first_clojure/input/2018/d7test"))
 
 (defn parse-all-steps
   ;; => {"M" "D" ... }

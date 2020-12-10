@@ -7,10 +7,10 @@
 (def init-state-test "#..#.#..##......###...###")
 
 (def input
-  (u/read-input "src/first_clojure/input/aoc201812"))
+  (u/read-input "src/first_clojure/input/2018/d12"))
 
 (def input-test
-  (u/read-input "src/first_clojure/input/aoc201812test"))
+  (u/read-input "src/first_clojure/input/2018/d12test"))
 
 (defn find-dot-forward
   [m]
@@ -122,23 +122,23 @@
   []
   (map (fn [item]
          (apply - item)) (partition 2 1 (map calc-sum
-                       (drop 141 (take 201
-                              (iterate (scan (matcher (parse input)))
-                                       (gen-state-map init-state))))))))
+                                             (drop 141 (take 201
+                                                             (iterate (scan (matcher (parse input)))
+                                                                      (gen-state-map init-state))))))))
 
 (defn part2
   []
   (let [a (calc-sum (last (take 143
-                       (iterate (scan (matcher (parse input)))
-                                (gen-state-map init-state)))))
+                                (iterate (scan (matcher (parse input)))
+                                         (gen-state-map init-state)))))
         b (* (- 50000000000 142) 32)]
     (+ a b)))
 
 (comment
   (part2)
   (calc-sum (last (take 143
-                   (iterate (scan (matcher (parse input)))
-                            (gen-state-map init-state)))))
+                        (iterate (scan (matcher (parse input)))
+                                 (gen-state-map init-state)))))
   (map calc-sum
        (drop 141 (take 201
                        (iterate (scan (matcher (parse input)))

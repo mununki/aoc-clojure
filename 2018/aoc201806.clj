@@ -3,7 +3,7 @@
             [clojure.string :as str]))
 
 (def input
-  (u/read-input "src/first_clojure/input/aoc201806"))
+  (u/read-input "src/first_clojure/input/2018/d6"))
 
 (defn parse
   ;; => ([1 [262 196]] [2 [110 109]] [3 [58 188]])
@@ -139,18 +139,18 @@
   (let [p (points-out-of-grid points)
         l (largest-area-in-grid points)
         names-largest (remove p (map (fn [[name area]]
-                                      name) l))]
+                                       name) l))]
     (keep (fn [[name area]]
             (if (= name (first names-largest))
               area)) l)))
 (defn part2
   [points]
   (-> (measure-dists (-> points
-                        parse)
-                    (-> points
-                        max-x-y))
-     check-if-safe
-     count))
+                         parse)
+                     (-> points
+                         max-x-y))
+      check-if-safe
+      count))
 
 (comment
   (count input)

@@ -2,7 +2,7 @@
   (:require [first-clojure.utils :as u]))
 
 (defn read-input []
-  (with-open [rdr (clojure.java.io/reader "src/first_clojure/input/aoc201801")]
+  (with-open [rdr (clojure.java.io/reader "src/first_clojure/input/2018/d1")]
     (reduce conj [] (line-seq rdr))))
 
 (def input-vector

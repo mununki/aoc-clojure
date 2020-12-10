@@ -3,7 +3,7 @@
             [clojure.string :as str]))
 
 (def input
-  (u/read-input "src/first_clojure/input/aoc201805"))
+  (u/read-input "src/first_clojure/input/2018/d5"))
 
 (defn reactor
   ;; 함수를 let binding해서 사용

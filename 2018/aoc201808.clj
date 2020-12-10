@@ -3,10 +3,10 @@
             [first-clojure.utils :as u]))
 
 (def input
-  (u/read-input "src/first_clojure/input/aoc201808"))
+  (u/read-input "src/first_clojure/input/2018/d8"))
 
 (def input-test
-  (u/read-input "src/first_clojure/input/aoc201808test"))
+  (u/read-input "src/first_clojure/input/2018/d8test"))
 
 (defn parse
   [raw]

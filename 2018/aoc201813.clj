@@ -3,10 +3,10 @@
             [first-clojure.utils :as u]))
 
 (def input
-  (u/read-input "src/first_clojure/input/aoc201813"))
+  (u/read-input "src/first_clojure/input/2018/d13"))
 
 (def input-test
-  (u/read-input "src/first_clojure/input/aoc201813test"))
+  (u/read-input "src/first_clojure/input/2018/d13test"))
 
 (def char-track
   ;; track => / - \ | +

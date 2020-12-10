@@ -4,10 +4,10 @@
             [data.deque :as dq]))
 
 (def input
-  (u/read-input "src/first_clojure/input/aoc201809"))
+  (u/read-input "src/first_clojure/input/2018/d9"))
 
 (def input-test
-  (u/read-input "src/first_clojure/input/aoc201809test"))
+  (u/read-input "src/first_clojure/input/2018/d9test"))
 
 (defn parse
   [raw]

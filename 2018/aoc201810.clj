@@ -4,10 +4,10 @@
             [quil.core :as q]))
 
 (def input
-  (u/read-input "src/first_clojure/input/aoc201810"))
+  (u/read-input "src/first_clojure/input/2018/d10"))
 
 (def input-test
-  (u/read-input "src/first_clojure/input/aoc201810test"))
+  (u/read-input "src/first_clojure/input/2018/d10test"))
 
 (defn parse
   [raw]

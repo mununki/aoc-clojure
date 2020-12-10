@@ -1,7 +1,7 @@
 (ns first-clojure.aoc201802
   (:require [first-clojure.utils :as u]))
 
-(def input (u/read-input "src/first_clojure/input/aoc201802"))
+(def input (u/read-input "src/first_clojure/input/2018/d2"))
 
 (defn dups-counter [line]
   (filter #(> (second %) 1) (frequencies line)))

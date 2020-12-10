@@ -3,7 +3,7 @@
             [clojure.string :as str]))
 
 (def input
-  (u/read-input "src/first_clojure/input/aoc201803"))
+  (u/read-input "src/first_clojure/input/2018/d3"))
 
 (defn coordinates [start offset with]
   (let [[start-x start-y] start

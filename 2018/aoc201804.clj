@@ -3,7 +3,7 @@
             [clojure.string :as str]))
 
 (def input
-  (u/read-input "src/first_clojure/input/aoc201804"))
+  (u/read-input "src/first_clojure/input/2018/d4"))
 
 (defn sort-logs
   ;; guard post log를 시간 순으로 정렬하는 함수
